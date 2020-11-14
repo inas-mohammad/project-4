@@ -1,9 +1,13 @@
 const express = require('express');
 const mainRouter = express.Router();
+
 const {
 getAllArticles,
 createNewArticle,
 changeArticleTitleById,
+changeArticleAuthorById,
+deleteArticleByAuthor,
+,deleteArticleById
 } = require('../controllers/main-controller');
 
 mainRouter.get('/articles', getAllArticles);
@@ -20,6 +24,9 @@ mainRouter.delete('/articles/:id',deleteArticleById );
 mainRouter.delete('/articles',deleteArticleByAuthor );
 
 
+
+
+module.exports = mainRouter;
 
 
 module.exports = mainRouter;
