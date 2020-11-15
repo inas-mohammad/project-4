@@ -42,6 +42,66 @@ const getAllArticles = (req, res) => {
         res.json(result)
     });
 };
+    const changeArticleTitleById = (req, res) => {
+    console.log(` changeArticleTitleById CALLED`);
+
+    const sqlCommand = `
+    UPDATE articles 
+    SET title = "${req.params.newTitle}"
+    where id = ${req.params.id}" `
+
+    connection.query(sqlCommand, (err, result) => {
+        if (err) throw err;
+        console.log('RESULT:', result);
+        res.json(result)
+    });;
+
+    res.json(articles_table)
+};
+
+const changeArticleAuthorById = (req, res) => {
+    console.log(` changeArticleAuthorByAuthor CALLED`);
+    const sqlCommand = `
+    UPDATE articles 
+    SET author = "${req.body.newAuthor}"
+    where id = ${req.params.id}" `
+
+    connection.query(sqlCommand, (err, result) => {
+        if (err) throw err;
+        console.log('RESULT:', result);
+        res.json(result)
+    });;
+
+    res.json(articles_table)
+};
+
+const deleteArticleById = (req, res) => {
+    console.log(` deleteArticleById CALLED`);
+    const sqlCommand = `DELETE  FROM articles WHERE where id = ${req.params.id}" ` ;
+    
+    
+     connection.query(sqlCommand, (err, result) => {
+        if (err) throw err;
+        console.log('RESULT:', result);
+        res.json(result)
+    });;
+
+    res.json(articles_table)
+};
+
+const deleteArticleByAuthor = (req, res) => {
+    console.log(` deleteArticleByAuthor CALLED`);
+    const sqlCommand = `DELETE  FROM articles WHERE where author = ${req.params.author}" ` ;
+    
+    
+     connection.query(sqlCommand, (err, result) => {
+        if (err) throw err;
+        console.log('RESULT:', result);
+        res.json(result)
+    });;
+
+    res.json(articles_table)
+};
 
 
 const getAllArticles_express = (req, res) => {
@@ -60,7 +120,7 @@ const createNewArticle = (req, res) => {
     res.json(articles_table);
 };
 
-const changeArticleTitleById = (req, res) => {
+const changeArticleTitleById_express = (req, res) => {
     console.log('REQ.PARAMS: ', req.params)
     console.log('ID: ', req.params.id)
     for (let i = 0; i < articles_table.length; i++) {
@@ -73,7 +133,7 @@ const changeArticleTitleById = (req, res) => {
     res.json(articles_table)
 };
 
-const changeArticleAuthorById = (req, res) => {
+const changeArticleAuthorById_express = (req, res) => {
     console.log('REQ.PARAMS: ', req.body)
     console.log('AUTHOR: ', req.params.author)
     if (req.body[i]==req.params.id) {
@@ -83,7 +143,7 @@ const changeArticleAuthorById = (req, res) => {
 };
 
 
-const deleteArticleById = (req, res) => {
+const deleteArticleById_express = (req, res) => {
     console.log('REQ.PARAMS: ', req.params)
     console.log('ID: ', req.params.id)
     
@@ -95,7 +155,7 @@ const deleteArticleById = (req, res) => {
     res.json(articles_table)
 };
 
-const deleteArticleByAuthor = (req, res) => {
+const deleteArticleByAuthor_express = (req, res) => {
     console.log('REQ.PARAMS: ', req.params )
     console.log('AUTHOR: ', req.params.author)
     
